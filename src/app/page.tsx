@@ -1,9 +1,12 @@
-import { Button } from "@/components/ui/button";
+import Container from "@/components/Container";
+import ProductsTable from "@/components/ProductsTable.tsx/ProductsTable";
 
 export default function Home() {
   return (
     <main>
-      <Button variant="default">Button</Button>
+      <Container>
+        <ProductsTable />
+      </Container>
     </main>
   );
 }

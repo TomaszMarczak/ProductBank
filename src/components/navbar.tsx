@@ -1,10 +1,8 @@
-import { ModeToggle } from "./theme-toggle";
+import { ModeToggle } from "./ThemeToggle";
 
 interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}
 
 const Navbar = (props: NavbarProps) => {
-  //Create tailwind navbar
-
   return (
     <nav className="flex items-center justify-between flex-wrap p-4">
       <div className="flex items-center">

@@ -19,6 +19,7 @@ const ProductsTable = () => {
         id: product.id,
         name: product.category,
         description: null,
+        parentCategory: null,
       },
       description: product.description,
     }));

@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-import ProductsTable from "@/components/ProductsTable.tsx/ProductsTable";
+import ProductsTable from "@/components/ProductsTable";
 
 export default function Home() {
   return (

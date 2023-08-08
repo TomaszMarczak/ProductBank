@@ -7,7 +7,7 @@ import {
   TableHead,
   TableBody,
   TableCell,
-} from "../ui/table";
+} from "./ui/table";
 import { Product } from "@/models/Product";
 
 interface DataTableProps {

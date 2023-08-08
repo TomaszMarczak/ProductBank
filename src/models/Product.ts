@@ -10,6 +10,8 @@ interface Product {
   images?: string[];
   image?: string;
   website?: string;
+  ean?: string;
+  ref?: string;
 }
 
 type GenericProduct = Pick<

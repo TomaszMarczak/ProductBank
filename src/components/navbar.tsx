@@ -1,4 +1,5 @@
 import { ModeToggle } from "./ThemeToggle";
+import SearchProductButton from "./SearchProductButton";
 
 interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -10,7 +11,8 @@ const Navbar = (props: NavbarProps) => {
           Product Library
         </span>
       </div>
-      <div className="ml-auto text">
+      <div className="ml-auto flex align-middle gap-2">
+        <SearchProductButton />
         <ModeToggle className="border" />
       </div>
     </nav>

@@ -1,5 +1,6 @@
 import { ModeToggle } from "./ThemeToggle";
 import SearchProductButton from "./SearchProductButton";
+import SignInButton from "./SignInButton";
 
 interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -13,6 +14,7 @@ const Navbar = (props: NavbarProps) => {
       </div>
       <div className="ml-auto flex align-middle gap-2">
         <SearchProductButton />
+        <SignInButton />
         <ModeToggle className="border" />
       </div>
     </nav>

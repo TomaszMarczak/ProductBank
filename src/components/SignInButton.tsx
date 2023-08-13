@@ -1,17 +1,8 @@
 "use client";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import { PersonIcon } from "@radix-ui/react-icons";
-import { SignIn } from "@clerk/nextjs";
-import Link from "next/link";
-import { Sign } from "crypto";
+import { SignIn, SignUp, useUser } from "@clerk/nextjs";
 
 const SignInButton = () => {
   return (

@@ -1,6 +1,8 @@
+"use client";
 import { ModeToggle } from "./ThemeToggle";
 import SearchProductButton from "./SearchProductButton";
-import SignInButton from "./SignInButton";
+import NavbarUserControl from "./NavbarUserControl";
+import { LayoutGroup, motion } from "framer-motion";
 
 interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -13,9 +15,11 @@ const Navbar = (props: NavbarProps) => {
         </span>
       </div>
       <div className="ml-auto flex align-middle gap-2">
-        <SearchProductButton />
-        <SignInButton />
-        <ModeToggle className="border" />
+        <LayoutGroup>
+          <SearchProductButton />
+          <NavbarUserControl />
+          <ModeToggle className="border" />
+        </LayoutGroup>
       </div>
     </nav>
   );

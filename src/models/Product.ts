@@ -8,15 +8,13 @@ interface Product {
   category: Category;
   thumbnail?: string;
   images?: string[];
-  image?: string;
   website?: string;
   ean?: string;
-  ref?: string;
 }
 
 type GenericProduct = Pick<
   Product,
-  "id" | "description" | "category" | "image"
+  "id" | "description" | "category" | "images"
 >;
 
 export type { Product, GenericProduct };

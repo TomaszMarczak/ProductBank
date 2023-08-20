@@ -13,15 +13,17 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 50,
+      "unique": true
     },
-    "description": {
-      "type": "text"
-    },
-    "parent_category": {
+    "products": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "category"
     }
   }
 }

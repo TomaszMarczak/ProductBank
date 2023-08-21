@@ -13,7 +13,7 @@ const Navbar = (props: NavbarProps) => {
       <div className="flex items-center">
         <Link href="/">
           <span className="font-semibold text-xl transition-all ">
-            Product Library
+            Product Bank
           </span>
         </Link>
       </div>

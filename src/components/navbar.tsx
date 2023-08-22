@@ -13,7 +13,7 @@ const Navbar = (props: NavbarProps) => {
       <div className="flex items-center">
         <Link href="/">
           <span className="font-semibold text-xl transition-all ">
-            Product Bank
+            {process.env.NEXT_PUBLIC_APP_NAME}
           </span>
         </Link>
       </div>

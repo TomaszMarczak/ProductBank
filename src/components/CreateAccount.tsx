@@ -42,8 +42,20 @@ const CreateAccount = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const response = await fetch(
+      "http://localhost:1337/api/auth/local/register",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: values.email,
+          email: values.email,
+          password: values.password,
+        }),
+      }
+    );
+    console.log(response);
   };
 
   return (

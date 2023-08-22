@@ -44,7 +44,7 @@ const CreateAccount = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const response = await fetch(
-      "http://localhost:1337/api/auth/local/register",
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/local/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

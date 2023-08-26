@@ -1,8 +1,6 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Label } from "@radix-ui/react-label";
-import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -13,24 +11,25 @@ import {
   CardFooter,
 } from "./ui/card";
 import { Icons } from "./icons/Icons";
-import Link from "next/link";
-import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
-import { AnimatePresence, motion } from "framer-motion";
 
-const CreateAccount = () => {
+import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+const Login = () => {
   const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/local/register`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/local`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: values.email,
-          email: values.email,
+          identifier: values.email,
           password: values.password,
         }),
       }
-    );
+    ).then((res) => res.json());
+
     console.log(response);
   };
 
@@ -43,10 +42,8 @@ const CreateAccount = () => {
     >
       <Card className="max-w-sm">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Create an account</CardTitle>
-          <CardDescription>
-            Enter your email below to create an account
-          </CardDescription>
+          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardDescription>Enter your credentials to login</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid grid-cols-2 gap-6">
@@ -75,9 +72,9 @@ const CreateAccount = () => {
         </CardContent>
         <CardFooter className="flex justify-center">
           <Label className="text-sm">
-            Already have an account?{" "}
-            <Link href="/login">
-              <span className="font-bold text-blue-800">Login!</span>
+            Don't have an account?{" "}
+            <Link href="/create-new-account">
+              <span className="font-bold text-blue-800">Create one!</span>
             </Link>
           </Label>
         </CardFooter>
@@ -86,4 +83,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default Login;

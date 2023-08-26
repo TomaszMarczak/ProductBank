@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/ProductsTable"
+    "src/components/ProductsTable",
+    "src/app/login"
   ],
   "exclude": ["node_modules"]
 }

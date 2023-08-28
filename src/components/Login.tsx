@@ -15,22 +15,13 @@ import { Icons } from "./icons/Icons";
 import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useAuth } from "@/context/authContext";
 
 const Login = () => {
-  const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/local`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          identifier: values.email,
-          password: values.password,
-        }),
-      }
-    ).then((res) => res.json());
+  const { emailLogin } = useAuth();
 
-    console.log(response);
+  const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {
+    emailLogin(values);
   };
 
   return (

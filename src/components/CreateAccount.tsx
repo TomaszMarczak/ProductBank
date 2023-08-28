@@ -15,7 +15,7 @@ import {
 import { Icons } from "./icons/Icons";
 import Link from "next/link";
 import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const CreateAccount = () => {
   const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {

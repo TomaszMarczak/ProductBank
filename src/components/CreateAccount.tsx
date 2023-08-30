@@ -16,31 +16,17 @@ import { Icons } from "./icons/Icons";
 import Link from "next/link";
 import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
 import { motion } from "framer-motion";
+import { useAuth } from "@/context/authContext";
+import AnimationWrapper from "./AnimationWrapper";
 
 const CreateAccount = () => {
+  const { emailRegister } = useAuth();
   const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/local/register`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: values.email,
-          email: values.email,
-          password: values.password,
-        }),
-      }
-    );
-    console.log(response);
+    emailRegister(values);
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-    >
+    <AnimationWrapper>
       <Card className="max-w-sm">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Create an account</CardTitle>
@@ -82,7 +68,7 @@ const CreateAccount = () => {
           </Label>
         </CardFooter>
       </Card>
-    </motion.div>
+    </AnimationWrapper>
   );
 };
 

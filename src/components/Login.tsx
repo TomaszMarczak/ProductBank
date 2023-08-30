@@ -11,26 +11,22 @@ import {
   CardFooter,
 } from "./ui/card";
 import { Icons } from "./icons/Icons";
-
 import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { useAuth } from "@/context/authContext";
+import { useRouter } from "next/navigation";
+import AnimationWrapper from "./AnimationWrapper";
 
 const Login = () => {
   const { emailLogin } = useAuth();
+  const router = useRouter();
 
   const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {
-    emailLogin(values);
+    emailLogin(values).then(() => router.push("/"));
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-    >
+    <AnimationWrapper>
       <Card className="max-w-sm">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Login</CardTitle>
@@ -70,7 +66,7 @@ const Login = () => {
           </Label>
         </CardFooter>
       </Card>
-    </motion.div>
+    </AnimationWrapper>
   );
 };
 

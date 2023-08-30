@@ -1,11 +1,18 @@
 "use client";
 import { emailPasswordSchema } from "@/components/EmailPasswordForm";
-import { redirect } from "next/navigation";
-import { useContext, createContext, ReactNode } from "react";
+import { useContext, createContext, ReactNode, useState } from "react";
 import { z } from "zod";
 
 interface AuthContextProps {
-  emailLogin: (values: z.infer<typeof emailPasswordSchema>) => void;
+  emailLogin: (values: z.infer<typeof emailPasswordSchema>) => Promise<void>;
+  emailRegister: (values: z.infer<typeof emailPasswordSchema>) => Promise<void>;
+  logout: () => void;
+  user: User | null;
+}
+interface User {
+  id: string;
+  username: string;
+  jwt: string;
 }
 
 const AuthContext = createContext({} as AuthContextProps);
@@ -13,6 +20,19 @@ const AuthContext = createContext({} as AuthContextProps);
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const getUserFromLocalStorage = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      return JSON.parse(user);
+    } else {
+      return null;
+    }
+  };
+
+  const [user, setUser] = useState<User | null>(() =>
+    getUserFromLocalStorage()
+  );
+
   const emailLogin = async (values: z.infer<typeof emailPasswordSchema>) => {
     try {
       const response = await fetch(
@@ -25,13 +45,19 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             password: values.password,
           }),
         }
-      ).then((res) => res.json());
-      if (response?.jwt) {
-        localStorage.setItem("jwt", response.jwt);
-      }
-      if (response?.user) {
-        localStorage.setItem("user", JSON.stringify(response.user));
-      }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.jwt && data.user) {
+            const user = {
+              id: data.user.id,
+              username: data.user.username,
+              jwt: data.jwt,
+            };
+            localStorage.setItem("user", JSON.stringify(user));
+            setUser(user);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -51,15 +77,17 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           }),
         }
       );
-      console.log(response);
-      redirect("/login");
     } catch (error) {
       console.log(error);
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
   return (
-    <AuthContext.Provider value={{ emailLogin }}>
+    <AuthContext.Provider value={{ emailLogin, emailRegister, user, logout }}>
       {children}
     </AuthContext.Provider>
   );

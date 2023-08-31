@@ -2,8 +2,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Label } from "@radix-ui/react-label";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "../_ui/input";
+import { Button } from "../_ui/button";
 import {
   Card,
   CardHeader,
@@ -11,8 +11,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "../ui/card";
-import { Icons } from "../icons/Icons";
+} from "../_ui/card";
+import { Icons } from "../_icons/Icons";
 import Link from "next/link";
 import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
 import { motion } from "framer-motion";

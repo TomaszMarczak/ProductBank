@@ -1,7 +1,7 @@
 "use client";
 import * as z from "zod";
 import { Label } from "@radix-ui/react-label";
-import { Button } from "../ui/button";
+import { Button } from "../_ui/button";
 import {
   Card,
   CardHeader,
@@ -9,8 +9,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "../ui/card";
-import { Icons } from "../icons/Icons";
+} from "../_ui/card";
+import { Icons } from "../_icons/Icons";
 import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
 import Link from "next/link";
 import { useAuth } from "@/context/authContext";

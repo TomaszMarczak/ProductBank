@@ -1,5 +1,5 @@
 import { Category } from "@/models/Category";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../_ui/card";
 
 interface CategoryCardProps extends React.HTMLAttributes<HTMLDivElement> {
   category: Category;

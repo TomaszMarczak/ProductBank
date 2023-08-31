@@ -2,7 +2,7 @@
 import { ModeToggle } from "../ThemeToggle";
 import SearchProductButton from "../Products/SearchProductButton";
 import NavbarUserControl from "./NavbarUserControl";
-import { LayoutGroup, motion } from "framer-motion";
+import { LayoutGroup } from "framer-motion";
 import Link from "next/link";
 
 interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}

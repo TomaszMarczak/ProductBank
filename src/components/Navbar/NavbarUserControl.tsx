@@ -1,9 +1,9 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "../_ui/button";
 import { useAuth } from "@/context/authContext";
-import UserButton from "../UserManagement/UserButton";
+import UserButton from "./UserButton";
 
 interface NavbarUserControlProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -29,7 +29,7 @@ const NavbarUserControl = (props: NavbarUserControlProps) => {
             </motion.div>
           </>
         )}
-      </div>{" "}
+      </div>
     </AnimatePresence>
   );
 };

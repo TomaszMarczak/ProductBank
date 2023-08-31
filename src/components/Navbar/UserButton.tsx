@@ -35,7 +35,7 @@ const UserButton = () => {
             <HamburgerMenuIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent hideWhenDetached className="max-w-[200px]">
+        <PopoverContent className="max-w-[200px]">
           <div className="flex flex-col gap-2">
             <Button onClick={handleProfileClick}>
               <PersonIcon className="mr-2" />

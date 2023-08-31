@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import DataTable from "./DataTable";
+import DataTable from "../DataTable";
 import { Product } from "@/models/Product";
 
 const ProductsTable = () => {

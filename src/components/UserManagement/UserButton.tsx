@@ -4,7 +4,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { useAuth } from "@/context/authContext";
 import { motion } from "framer-motion";
 

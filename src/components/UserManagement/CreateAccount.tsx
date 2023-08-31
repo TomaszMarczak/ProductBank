@@ -1,7 +1,9 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Label } from "@radix-ui/react-label";
-import { Button } from "./ui/button";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 import {
   Card,
   CardHeader,
@@ -9,28 +11,28 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "./ui/card";
-import { Icons } from "./icons/Icons";
-import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
+} from "../ui/card";
+import { Icons } from "../icons/Icons";
 import Link from "next/link";
+import EmailPasswordForm, { emailPasswordSchema } from "./EmailPasswordForm";
+import { motion } from "framer-motion";
 import { useAuth } from "@/context/authContext";
-import { useRouter } from "next/navigation";
-import AnimationWrapper from "./AnimationWrapper";
+import AnimationWrapper from "../AnimationWrapper";
 
-const Login = () => {
-  const { emailLogin } = useAuth();
-  const router = useRouter();
-
+const CreateAccount = () => {
+  const { emailRegister } = useAuth();
   const onSubmit = async (values: z.infer<typeof emailPasswordSchema>) => {
-    emailLogin(values).then(() => router.push("/"));
+    emailRegister(values);
   };
 
   return (
     <AnimationWrapper>
       <Card className="max-w-sm">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>Enter your credentials to login</CardDescription>
+          <CardTitle className="text-2xl">Create an account</CardTitle>
+          <CardDescription>
+            Enter your email below to create an account
+          </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid grid-cols-2 gap-6">
@@ -59,9 +61,9 @@ const Login = () => {
         </CardContent>
         <CardFooter className="flex justify-center">
           <Label className="text-sm">
-            Don't have an account?{" "}
-            <Link href="/create-new-account">
-              <span className="font-bold text-blue-800">Create one!</span>
+            Already have an account?{" "}
+            <Link href="/login">
+              <span className="font-bold text-blue-800">Login!</span>
             </Link>
           </Label>
         </CardFooter>
@@ -70,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default CreateAccount;

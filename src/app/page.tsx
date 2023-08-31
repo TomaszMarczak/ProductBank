@@ -1,4 +1,4 @@
-import CategoryCardGrid from "@/components/CategoryCardGrid";
+import CategoryCardGrid from "@/components/CategoryCard/CategoryCardGrid";
 import Container from "@/components/Container";
 
 export default function Page() {

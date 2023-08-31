@@ -1,9 +1,9 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { useAuth } from "@/context/authContext";
-import UserButton from "./UserButton";
+import UserButton from "../UserManagement/UserButton";
 
 interface NavbarUserControlProps extends React.HTMLAttributes<HTMLElement> {}
 

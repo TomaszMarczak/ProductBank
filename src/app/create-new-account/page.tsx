@@ -1,4 +1,4 @@
-import CreateAccount from "@/components/CreateAccount";
+import CreateAccount from "@/components/UserManagement/CreateAccount";
 
 export default function Page() {
   return (

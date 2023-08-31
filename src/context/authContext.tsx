@@ -1,5 +1,5 @@
 "use client";
-import { emailPasswordSchema } from "@/components/EmailPasswordForm";
+import { emailPasswordSchema } from "@/components/UserManagement/EmailPasswordForm";
 import { useContext, createContext, ReactNode, useState } from "react";
 import { z } from "zod";
 
